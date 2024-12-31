@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import com.google.android.material.textfield.TextInputLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mobileapp.CredentialsManager
-
 
 class SignInActivity : AppCompatActivity() {
 
@@ -14,11 +12,9 @@ class SignInActivity : AppCompatActivity() {
     private val passwordInput: TextInputLayout by lazy { findViewById<TextInputLayout>(R.id.passwordTextInputLayout) }
     private val signInButton: Button by lazy { findViewById<Button>(R.id.signInButton) }
 
-    private val credentialsManager = CredentialsManager()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in2)
+        setContentView(R.layout.activity_sign_in)
 
         signInButton.setOnClickListener {
             validateAndLogin()
@@ -31,14 +27,14 @@ class SignInActivity : AppCompatActivity() {
 
         var isValid = true
 
-        if (!credentialsManager.isEmailValid(email)) {
+        if (!CredentialsManager.isEmailValid(email)) {
             emailInput.error = "Invalid email address"
             isValid = false
         } else {
             emailInput.error = null
         }
 
-        if (!credentialsManager.isPasswordValid(password)) {
+        if (!CredentialsManager.isPasswordValid(password)) {
             passwordInput.error = "Password cannot be empty"
             isValid = false
         } else {
@@ -46,7 +42,7 @@ class SignInActivity : AppCompatActivity() {
         }
 
         if (isValid) {
-            if (email == "test@te.st" && password == "1234") {
+            if (CredentialsManager.login(email, password)) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
