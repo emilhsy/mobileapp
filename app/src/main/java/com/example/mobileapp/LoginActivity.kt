@@ -14,7 +14,6 @@ class LoginActivity : AppCompatActivity() {
 
         textRegisterNow.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
-            // Clear this activity from the backstack to prevent loops
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         }

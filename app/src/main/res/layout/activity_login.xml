@@ -6,7 +6,6 @@
     android:gravity="center"
     android:padding="16dp">
 
-    <!-- Login Form -->
     <TextView
         android:id="@+id/textWelcome"
         android:layout_width="wrap_content"
@@ -21,7 +20,6 @@
         android:layout_height="wrap_content"
         android:text="Log In" />
 
-    <!-- Navigation to Register -->
     <TextView
         android:id="@+id/textRegisterNow"
         android:layout_width="wrap_content"
