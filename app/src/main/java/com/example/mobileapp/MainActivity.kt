@@ -1,27 +1,50 @@
 package com.example.mobileapp
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import kotlinx.android.synthetic.main.activity_main.*  // For accessing views
 
 class MainActivity : AppCompatActivity() {
+
+    private var isFragmentA = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val createAccountButton: Button = findViewById(R.id.createAccountButton)
-        val signInButton: Button = findViewById(R.id.signInButton)
-
-        createAccountButton.setOnClickListener {
-            val intent = Intent(this, CreateAccountActivity::class.java)
-            startActivity(intent)
+        if (savedInstanceState != null) {
+            isFragmentA = savedInstanceState.getBoolean("isFragmentA", true)
         }
 
-        signInButton.setOnClickListener {
-            val intent = Intent(this, SignInActivity::class.java)
-            startActivity(intent)
+        if (isFragmentA) {
+            loadFragment(FragmentA())
+        } else {
+            loadFragment(FragmentB())
         }
 
+        switchButton.setOnClickListener {
+            if (isFragmentA) {
+                loadFragment(FragmentB())
+            } else {
+                loadFragment(FragmentA())
+            }
+
+            isFragmentA = !isFragmentA
+
+            switchButton.text = if (isFragmentA) "Switch to FragmentB" else "Switch to FragmentA"
+        }
+    }
+
+    private fun loadFragment(fragment: Fragment) {
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragmentContainer, fragment)
+        transaction.commit()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("isFragmentA", isFragmentA)
     }
 }
