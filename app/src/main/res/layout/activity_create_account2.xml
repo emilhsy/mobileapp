@@ -12,66 +12,84 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Account"
-        android:textSize="24sp"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/fullNameEditText"
+        style="@style/TextViewStyle"
+        app:layout_constraintBottom_toTopOf="@id/fullNameTextInputLayout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:gravity="center"/>
 
-    <EditText
-        android:id="@+id/fullNameEditText"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fullNameTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Full Name"
-        android:padding="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/edit_text_background"
+        style="@style/EditTextStyle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleCreateAccount" />
+        app:layout_constraintTop_toBottomOf="@id/titleCreateAccount"
+        app:hintEnabled="true">
 
-    <EditText
-        android:id="@+id/emailCreateEditText"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fullNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:inputType="textPersonName"
+            android:padding="16dp"
+            android:background="@drawable/rounded_edit_text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailCreateTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:padding="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/edit_text_background"
+        style="@style/EditTextStyle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fullNameEditText" />
+        app:layout_constraintTop_toBottomOf="@id/fullNameTextInputLayout"
+        app:hintEnabled="true">
 
-    <EditText
-        android:id="@+id/passwordCreateEditText"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailCreateEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="16dp"
+            android:background="@drawable/rounded_edit_text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordCreateTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/edit_text_background"
+        style="@style/EditTextStyle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailCreateEditText" />
+        app:layout_constraintTop_toBottomOf="@id/emailCreateTextInputLayout"
+        app:hintEnabled="true">
 
-    <Button
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordCreateEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="16dp"
+            android:background="@drawable/rounded_edit_text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/createAccountButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
         android:text="Create Account"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:layout_marginTop="32dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordCreateEditText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/button_background" />
-
+        app:layout_constraintTop_toBottomOf="@id/passwordCreateTextInputLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
